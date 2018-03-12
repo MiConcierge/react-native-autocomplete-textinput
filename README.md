@@ -1,3 +1,3 @@
-# react-native-autocomplete
+# react-native-autocomplete-textinput
 
 TODO ...
