@@ -1,4 +1,4 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import { AppRegistry } from 'react-native'
+import App from './App'
 
-AppRegistry.registerComponent('react_native_autocomplete', () => App);
+AppRegistry.registerComponent('react_native_autocomplete', () => App)
