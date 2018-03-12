@@ -1,4 +1,3 @@
-import { AppRegistry } from 'react-native'
-import App from './App'
+import AutocompleteTextInput from './AutocompleteTextInput'
 
-AppRegistry.registerComponent('react_native_autocomplete', () => App)
+export default AutocompleteTextInput
