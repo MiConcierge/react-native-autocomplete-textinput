@@ -1,11 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native'
+
+import AutocompleteTextInput from './js/AutocompleteTextInput'
+
+const fruits = [
+  'Apple',
+  'Banana',
+  'Cherry',
+  'Date',
+  'Grape',
+  'Kiwi',
+  'Mango',
+  'Pear'
+]
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -15,18 +22,23 @@ const instructions = Platform.select({
 })
 
 export default class App extends Component {
+  state = {
+    text: ''
+  }
+
   render () {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <AutocompleteTextInput
+          value={this.state.text}
+          onChangeText={text => this.setState({ text })}
+          data={fruits}
+          keyExtractor={x => x}
+          placeholder='Type something...'
+        />
       </View>
     )
   }
