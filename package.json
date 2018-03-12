@@ -1,24 +1,16 @@
 {
-  "name": "react_native_autocomplete",
+  "name": "react-native-autocomplete",
   "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "react-native start",
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "test": "jest",
-    "lint": "./node_modules/.bin/standard",
-    "lint-fix": "./node_modules/.bin/standard --fix"
-  },
-  "dependencies": {
-    "react": "^16.3.0-alpha.1",
-    "react-native": "0.54.1"
+  "description": "Simple react autocomplete",
+  "main": "index.js",
+  "keywords": ["react-native"],
+  "author": "Jerome Olvera Sanchez",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jerolan/react-native-autocomplete.git"
   },
   "devDependencies": {
-    "babel-jest": "22.4.1",
-    "babel-preset-react-native": "4.0.0",
-    "jest": "22.4.2",
-    "react-test-renderer": "^16.3.0-alpha.1",
     "standard": "^11.0.0"
   },
   "jest": {
