@@ -5,8 +5,8 @@ import Input from './Input'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
 
-function _renderItem ({ item }) {
-  return <MenuItem>
+function _renderItem (style) {
+  return ({ item }) => <MenuItem style={style}>
     { item }
   </MenuItem>
 }
@@ -31,19 +31,24 @@ const AutocompleteTextInput = ({
   placeholder,
   data,
   renderItem,
-  keyExtractor
+  keyExtractor,
+  inputStyle,
+  menuStyle,
+  menuItemStyle,
+  containerStyle
 }) => (
-  <View>
+  <View style={containerStyle}>
     <Input
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+      style={inputStyle}
       placeholder={placeholder}
       value={value}
       onChangeText={onChangeText}
     />
     <Menu
+      style={inputStyle}
       filter={value}
       data={data.filter(queryFilter(value))}
-      renderItem={_renderItem}
+      renderItem={renderItem || _renderItem(menuItemStyle)}
       keyExtractor={keyExtractor}
     />
   </View>

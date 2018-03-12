@@ -14,13 +14,6 @@ const fruits = [
   'Pear'
 ]
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu'
-})
-
 export default class App extends Component {
   state = {
     text: ''
@@ -35,28 +28,37 @@ export default class App extends Component {
         <AutocompleteTextInput
           value={this.state.text}
           onChangeText={text => this.setState({ text })}
+          placeholder='Type something...'
           data={fruits}
           keyExtractor={x => x}
-          placeholder='Type something...'
+          renderItem={({ item }) => (
+            <View style={{ backgroundColor: 'red' }}>
+              <Text>{ item }</Text>
+            </View>
+          )}
         />
 
-        <Modal
-          visible
-          animationType='slide'
-          transparent={false}
-          onRequestClose={() => {
-            alert('Modal has been closed.');
-          }}>
-          <View style={{marginTop: 22}}>
-            <AutocompleteTextInput
-              value={this.state.text}
-              onChangeText={text => this.setState({ text })}
-              data={fruits}
-              keyExtractor={x => x}
-              placeholder='Type something...'
-            />
-          </View>
-        </Modal>
+        {
+          /*
+          <Modal
+            visible
+            animationType='slide'
+            transparent={false}
+            onRequestClose={() => {
+              alert('Modal has been closed.');
+            }}>
+            <View style={{marginTop: 22}}>
+              <AutocompleteTextInput
+                value={this.state.text}
+                onChangeText={text => this.setState({ text })}
+                data={fruits}
+                keyExtractor={x => x}
+                placeholder='Type something...'
+              />
+            </View>
+          </Modal>
+          */
+        }
       </View>
     )
   }

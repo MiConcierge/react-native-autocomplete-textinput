@@ -1,9 +1,9 @@
 import React from 'react'
 import { FlatList, StyleSheet } from 'react-native'
 
-const Menu = (props) => (
+const Menu = ({ style, ...props }) => (
   <FlatList
-    style={[styles.container, props.style]}
+    style={[styles.container, style]}
     {...props}
   />
 )
