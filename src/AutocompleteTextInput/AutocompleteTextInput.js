@@ -35,17 +35,26 @@ const AutocompleteTextInput = ({
   inputStyle,
   menuStyle,
   menuItemStyle,
-  containerStyle
+  containerStyle,
+  customInputComponent
 }) => (
-  <View style={containerStyle}>
-    <Input
-      style={inputStyle}
-      placeholder={placeholder}
-      value={value}
-      onChangeText={onChangeText}
-    />
+  <View style={[{ flex: 1 }, containerStyle]}>
+    {
+      customInputComponent
+        ? customInputComponent({
+          placeholder,
+          value,
+          onChangeText
+        })
+        : <Input
+          style={inputStyle}
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+        />
+    }
     <Menu
-      style={inputStyle}
+      style={menuStyle}
       filter={value}
       data={data.filter(queryFilter(value))}
       renderItem={renderItem || _renderItem(menuItemStyle)}
