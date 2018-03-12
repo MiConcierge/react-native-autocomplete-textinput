@@ -1,3 +1,3 @@
-import AutocompleteTextInput from './AutocompleteTextInput'
+import AutocompleteTextInput from './src/AutocompleteTextInput'
 
 export default AutocompleteTextInput

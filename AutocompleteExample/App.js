@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Platform, StyleSheet, Text, View, Modal } from 'react-native'
+import { Platform, StyleSheet, Text, View, Modal, TextInput } from 'react-native'
 
-import AutocompleteTextInput from './js/AutocompleteTextInput'
+import AutocompleteTextInput from './src/AutocompleteTextInput'
 
 const fruits = [
   'Apple',
@@ -25,35 +25,21 @@ export default class App extends Component {
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
+
         <AutocompleteTextInput
+          customInputComponent={
+            (props) => <TextInput
+              {...props}
+              style={{ fontSize: 30, width: 200 }}
+            />
+          }
+          menuStyle={{ top: 60 }}
           value={this.state.text}
           onChangeText={text => this.setState({ text })}
           placeholder='Type something...'
           data={fruits}
           keyExtractor={x => x}
         />
-
-        {
-          /*
-          <Modal
-            visible
-            animationType='slide'
-            transparent={false}
-            onRequestClose={() => {
-              alert('Modal has been closed.');
-            }}>
-            <View style={{marginTop: 22}}>
-              <AutocompleteTextInput
-                value={this.state.text}
-                onChangeText={text => this.setState({ text })}
-                data={fruits}
-                keyExtractor={x => x}
-                placeholder='Type something...'
-              />
-            </View>
-          </Modal>
-          */
-        }
       </View>
     )
   }
@@ -70,10 +56,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5
   }
 })
