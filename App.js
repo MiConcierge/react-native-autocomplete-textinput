@@ -31,11 +31,6 @@ export default class App extends Component {
           placeholder='Type something...'
           data={fruits}
           keyExtractor={x => x}
-          renderItem={({ item }) => (
-            <View style={{ backgroundColor: 'red' }}>
-              <Text>{ item }</Text>
-            </View>
-          )}
         />
 
         {

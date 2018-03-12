@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, StyleSheet } from 'react-native'
+import { FlatList, Platform, StyleSheet } from 'react-native'
 
 const Menu = ({ style, ...props }) => (
   <FlatList
@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
   container: {
     left: 0,
     right: 0,
-    top: 17,
-    maxHeight: 30,
+    top: Platform.OS === 'ios' ? 17 : 41,
+    maxHeight: 60,
     position: 'absolute',
     backgroundColor: 'white',
     elevation: 6,
