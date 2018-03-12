@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Platform, StyleSheet, Text, View } from 'react-native'
+import { Platform, StyleSheet, Text, View, Modal } from 'react-native'
 
 import AutocompleteTextInput from './js/AutocompleteTextInput'
 
@@ -39,6 +39,24 @@ export default class App extends Component {
           keyExtractor={x => x}
           placeholder='Type something...'
         />
+
+        <Modal
+          visible
+          animationType='slide'
+          transparent={false}
+          onRequestClose={() => {
+            alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: 22}}>
+            <AutocompleteTextInput
+              value={this.state.text}
+              onChangeText={text => this.setState({ text })}
+              data={fruits}
+              keyExtractor={x => x}
+              placeholder='Type something...'
+            />
+          </View>
+        </Modal>
       </View>
     )
   }
