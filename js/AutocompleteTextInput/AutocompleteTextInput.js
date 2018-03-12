@@ -11,8 +11,9 @@ function _renderItem ({ item }) {
   </MenuItem>
 }
 
-function queryFilter (value) {
+function queryFilter (value = '') {
   return item => {
+    if (value === '') return false
     return item
       .trim()
       .toLowerCase()
@@ -41,7 +42,6 @@ const AutocompleteTextInput = ({
     />
     <Menu
       filter={value}
-      style={{ maxHeight: 30, backgroundColor: 'rgba(255, 0, 0, 0.5)' }}
       data={data.filter(queryFilter(value))}
       renderItem={_renderItem}
       keyExtractor={keyExtractor}
