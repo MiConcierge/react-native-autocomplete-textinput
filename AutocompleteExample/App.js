@@ -27,13 +27,6 @@ export default class App extends Component {
         </Text>
 
         <AutocompleteTextInput
-          customInputComponent={
-            (props) => <TextInput
-              {...props}
-              style={{ fontSize: 30, width: 200 }}
-            />
-          }
-          menuStyle={{ top: 60 }}
           value={this.state.text}
           onChangeText={text => this.setState({ text })}
           placeholder='Type something...'

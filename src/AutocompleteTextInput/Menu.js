@@ -1,11 +1,15 @@
 import React from 'react'
-import { FlatList, Platform, StyleSheet } from 'react-native'
+import { TouchableWithoutFeedback, FlatList, Platform, StyleSheet } from 'react-native'
 
-const Menu = ({ style, ...props }) => (
-  <FlatList
-    style={[styles.container, style]}
-    {...props}
-  />
+const Menu = ({ style, onPressIn, onPressOut, ...props }) => (
+  <TouchableWithoutFeedback
+    onPressOut={onPressOut}
+    onPressIn={onPressIn}>
+    <FlatList
+      style={[styles.container, style]}
+      {...props}
+    />
+  </TouchableWithoutFeedback>
 )
 
 const styles = StyleSheet.create({
@@ -16,7 +20,8 @@ const styles = StyleSheet.create({
     maxHeight: 60,
     position: 'absolute',
     backgroundColor: 'white',
-    elevation: 6,
+    elevation: 16,
+    zIndex: 16,
     shadowColor: 'black',
     shadowOffset: {
       width: 0,

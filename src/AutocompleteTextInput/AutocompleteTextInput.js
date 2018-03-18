@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+import isEmpty from 'lodash.isempty'
 
 import Input from './Input'
 import Menu from './Menu'
@@ -36,16 +37,19 @@ const AutocompleteTextInput = ({
   menuStyle,
   menuItemStyle,
   containerStyle,
-  customInputComponent
+  InputComponent,
+  onPressIn,
+  onTouchStart,
+  filter = queryFilter
 }) => (
-  <View style={[{ flex: 1 }, containerStyle]}>
+  <View style={containerStyle}>
     {
-      customInputComponent
-        ? customInputComponent({
-          placeholder,
-          value,
-          onChangeText
-        })
+      InputComponent
+        ? <InputComponent
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+        />
         : <Input
           style={inputStyle}
           placeholder={placeholder}
@@ -53,13 +57,17 @@ const AutocompleteTextInput = ({
           onChangeText={onChangeText}
         />
     }
-    <Menu
-      style={menuStyle}
-      filter={value}
-      data={data.filter(queryFilter(value))}
-      renderItem={renderItem || _renderItem(menuItemStyle)}
-      keyExtractor={keyExtractor}
-    />
+    {
+      !isEmpty(value) && <Menu
+        onPressIn={onPressIn}
+        onTouchStart={onTouchStart}
+        style={menuStyle}
+        filter={value}
+        data={data.filter(filter(value))}
+        renderItem={renderItem || _renderItem(menuItemStyle)}
+        keyExtractor={keyExtractor}
+      />
+    }
   </View>
 )
 

@@ -1,7 +1,7 @@
 {
   "name": "react-native-autocomplete-textinput",
-  "version": "0.0.1",
-  "description": "Simple react autocomplete",
+  "version": "0.1.0",
+  "description": "Standard react-native Autocomplete",
   "main": "index.js",
   "keywords": [
     "react-native"
@@ -29,6 +29,6 @@
     ]
   },
   "dependencies": {
-    "npm": "^5.7.1"
+    "lodash.isempty": "^4.4.0"
   }
 }
