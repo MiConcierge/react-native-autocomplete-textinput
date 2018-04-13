@@ -1,10 +1,11 @@
 import React from 'react'
 import { View } from 'react-native'
-import isEmpty from 'lodash.isempty'
+import isEmpty from 'lodash/isEmpty'
 
 import Input from './Input'
 import Menu from './Menu'
 import MenuItem from './MenuItem'
+import EmptyList from './EmptyList'
 
 function _renderItem (style) {
   return ({ item }) => <MenuItem style={style}>
@@ -28,28 +29,33 @@ function queryFilter (value = '') {
 
 const AutocompleteTextInput = ({
   value,
+  hideEmptyList,
   onChangeText,
   placeholder,
   data,
   renderItem,
   keyExtractor,
+  filter = queryFilter,
   inputStyle,
   menuStyle,
   menuItemStyle,
   containerStyle,
-  InputComponent,
+  customInputComponent,
+  CustomEmptyList,
   onPressIn,
   onTouchStart,
-  filter = queryFilter
+  onPressOut,
+  onMomentumScrollEnd,
+  onScrollEndDrag
 }) => (
   <View style={containerStyle}>
     {
-      InputComponent
-        ? <InputComponent
-          placeholder={placeholder}
-          value={value}
-          onChangeText={onChangeText}
-        />
+      customInputComponent
+        ? customInputComponent({
+          placeholder,
+          value,
+          onChangeText
+        })
         : <Input
           style={inputStyle}
           placeholder={placeholder}
@@ -58,15 +64,22 @@ const AutocompleteTextInput = ({
         />
     }
     {
-      !isEmpty(value) && <Menu
-        onPressIn={onPressIn}
-        onTouchStart={onTouchStart}
-        style={menuStyle}
-        filter={value}
-        data={data.filter(filter(value))}
-        renderItem={renderItem || _renderItem(menuItemStyle)}
-        keyExtractor={keyExtractor}
-      />
+      !hideEmptyList && !isEmpty(value) && isEmpty(data.filter(filter(value)))
+        ? <EmptyList
+          text='No results found'
+        />
+        : !isEmpty(value) && <Menu
+          onPressIn={onPressIn}
+          onTouchStart={onTouchStart}
+          onPressOut={onPressOut}
+          onMomentumScrollEnd={onMomentumScrollEnd}
+          onScrollEndDrag={onScrollEndDrag}
+          style={menuStyle}
+          filter={value}
+          data={data.filter(filter(value))}
+          renderItem={renderItem || _renderItem(menuItemStyle)}
+          keyExtractor={keyExtractor}
+        />
     }
   </View>
 )

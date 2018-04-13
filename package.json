@@ -4,7 +4,8 @@
   "description": "Standard react-native Autocomplete",
   "main": "index.js",
   "keywords": [
-    "react-native"
+    "react-native",
+    "autocomplete"
   ],
   "author": "Jerome Olvera Sanchez",
   "license": "MIT",

@@ -27,12 +27,36 @@ export default class App extends Component {
         </Text>
 
         <AutocompleteTextInput
+          inputStyle={{ width: 300, height: 40, backgroundColor: 'rgba(0, 0, 0, 0.34)' }}
           value={this.state.text}
           onChangeText={text => this.setState({ text })}
           placeholder='Type something...'
           data={fruits}
           keyExtractor={x => x}
         />
+
+        <TextInput
+          style={{ zIndex: -1 }}
+          placeholder='Type something...'
+        />
+
+        <TextInput
+          style={{ zIndex: -1 }}
+          placeholder='Type something...'
+        />
+
+        <TextInput
+          placeholder='Type something...'
+        />
+
+        <TextInput
+          placeholder='Type something...'
+        />
+
+        <TextInput
+          placeholder='Type something...'
+        />
+
       </View>
     )
   }

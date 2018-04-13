@@ -6,8 +6,8 @@ const Menu = ({ style, onPressIn, onPressOut, ...props }) => (
     onPressOut={onPressOut}
     onPressIn={onPressIn}>
     <FlatList
-      style={[styles.container, style]}
       {...props}
+      style={[styles.container, style]}
     />
   </TouchableWithoutFeedback>
 )
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   container: {
     left: 0,
     right: 0,
-    top: Platform.OS === 'ios' ? 17 : 41,
+    top: Platform.OS === 'ios' ? 41 : 41,
     maxHeight: 60,
     position: 'absolute',
     backgroundColor: 'white',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Platform, TouchableNativeFeedback } from 'react-native'
+import { StyleSheet, View, Text, Platform, TouchableNativeFeedback } from 'react-native'
 
 const Touchable = Platform.select({
   ios: () => {
@@ -15,13 +15,25 @@ const Touchable = Platform.select({
 const Menu = ({ children, ...props }) => (
   <Touchable
     background={
+      Platform.OS === 'android' &&
       TouchableNativeFeedback.SelectableBackground &&
       TouchableNativeFeedback.SelectableBackground()
     }>
-    <Text {...props}>
-      {children}
-    </Text>
+    <View style={styles.container}>
+      <Text {...props}>
+        {children}
+      </Text>
+    </View>
   </Touchable>
 )
+
+const styles = StyleSheet.create({
+  container: {
+    height: 48,
+    zIndex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 16
+  }
+})
 
 export default Menu

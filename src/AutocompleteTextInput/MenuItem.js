@@ -15,6 +15,7 @@ const Touchable = Platform.select({
 const Menu = ({ children, ...props }) => (
   <Touchable
     background={
+      Platform.OS === 'android' &&
       TouchableNativeFeedback.SelectableBackground &&
       TouchableNativeFeedback.SelectableBackground()
     }>
